@@ -60,3 +60,17 @@
 - [Video](ENLACE_DRIVE)
 
 ### Validacion
+
+## FINAL - [NOMBRE]
+
+**Estado:** Pendiente
+
+### Artefactos
+- [Codigo](src/E05/)
+
+### Evidencias
+- [Video](ENLACE_DRIVE)
+
+### Validacion
+
+Declaramos que hemos realizado, ejecutado y comprobado las tareas y las evidencias de este cuaderno de campo. Hemos declarado en IA.md cualquier uso de IA generativa. Todos los integrantes comprendemos el funcionamiento de la solución que entregamos.
