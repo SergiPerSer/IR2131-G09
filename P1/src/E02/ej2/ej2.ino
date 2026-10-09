@@ -6,27 +6,37 @@ SYSTEM_THREAD(ENABLED);
 const char* GROUP_ID = "G09-2627";
 // Selecciona el pin del LED Grove simple.
 const int LED_PIN = D4;
+String lastCommand = "";
+int lastResult = 0;
+bool pendingPublish = false;
+unsigned long last_pub;
+unsigned long last_parpadeo;
+bool ledOn = false;
+
 
 // Particle llama a esta funcion cuando recibe una orden remota.
 int ledControl(String command) {
-    // Compara el argumento con ON, respetando las mayusculas.
-    if (command == "ON") {
-        // Enciende el LED.
-        digitalWrite(LED_PIN, HIGH);
-        // Devuelve 1 para indicar que la orden se ha aceptado.
-        return 1;
-    }
-    // Comprueba si la orden pide apagar el LED.
-    if (command == "OFF") {
-        // Apaga el LED.
-        digitalWrite(LED_PIN, LOW);
-        // Confirma que la orden se ha aceptado.
-        return 1;
-    }
-    // Rechaza cualquier otro texto sin cambiar la salida.
-    return -1;
-}
+    int result = -1;
 
+    if (command == "ON") {
+        digitalWrite(LED_PIN, HIGH);
+        result = 1;
+    }
+    else if (command == "OFF") {
+        digitalWrite(LED_PIN, LOW);
+        result = 1;
+    }
+    else if (command == "BLINK") {
+        result = 1;
+    }
+    
+    if (result != -1){
+        lastCommand = command;
+        lastResult = result;    
+    }
+
+    return result;
+}
 // Configura la salida y registra la funcion al arrancar.
 void setup() {
     // Configura D4 como salida digital.
@@ -70,17 +80,29 @@ bool testPublished = false;
 
 // Sustituye al loop vacio del primer ejemplo de E02.
 void loop() {
-    // ! significa "no" y && exige que se cumplan las dos condiciones.
-    // Entra solo si falta publicar y existe conexion con Particle Cloud.
-    if (!testPublished && Particle.connected()) {
-        // Construye el JSON de un comando ON con resultado 1.
-        String payload = makePayload("ON", 1);
-        // Comprueba que makePayload haya devuelto un texto no vacio.
+    
+    if (pendingPublish && Particle.connected()) {
+        String payload = makePayload(lastCommand, lastResult);
+
         if (payload.length() > 0) {
-            // Publica el evento; cambiad XX por vuestro numero de grupo.
-            Particle.publish("IR2131-G09-E02", payload, PRIVATE);
-            // Recuerda la llamada para no repetirla en la siguiente vuelta.
-            testPublished = true;
+            bool published = Particle.publish(
+                "IR2131-G09-E02",
+                payload,
+                PRIVATE
+            );
+
+            if (published) {
+                pendingPublish = false;
+                last_pub = millis();
+            }
         }
+    }
+    if (lastCommand == "BLINK" && millis()-last_parpadeo >= 100){
+        last_parpadeo = millis();
+        ledOn = !ledOn;
+        digitalWrite(LED_PIN, ledOn ? HIGH : LOW);
+    }
+    if (millis()-last_pub >= 1000){
+        pendingPublish=true;
     }
 }
