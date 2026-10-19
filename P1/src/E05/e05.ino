@@ -39,26 +39,26 @@ void setup() {
     display.set(BRIGHT_TYPICAL);
     // Desactiva el separador de dos puntos de la pantalla.
     display.point(POINT_OFF);
-    
+
     pinMode(BUZZER_PIN, OUTPUT);
 }
 
 void sonido(){
-    
+
     if (state == "SAFE"){
         digitalWrite(BUZZER_PIN, LOW);
     }
-    
+
     if (state == "WARNING"){
         digitalWrite(BUZZER_PIN, HIGH);
-        delay(500); 
+        delay(500);
         digitalWrite(BUZZER_PIN, LOW);
         delay(500);
     }
-    
+
     if (state == "DANGER"){
         digitalWrite(BUZZER_PIN, HIGH);
-        delay(100); 
+        delay(100);
         digitalWrite(BUZZER_PIN, LOW);
         delay(100);
     }
@@ -95,7 +95,7 @@ void loop() {
     if (millis() - lastRead >= 500) {
         lastRead = millis();
         distance = int(ultrasonic.MeasureInCentimeters());
-        
+
         // Muestra la distancia en el display de 4 dígitos
         display.display(0, (distance / 1000) % 10);
         display.display(1, (distance / 100) % 10);
@@ -105,14 +105,14 @@ void loop() {
 
     if (distance > 20) {
         state = "SAFE";
-    } 
+    }
     else if (distance >= 10 && distance <= 20) {
         state = "WARNING";
-    } 
+    }
     else if (distance < 10) {
         state = "DANGER";
     }
-    
+
     if ((millis() - lastSent < 5000) || first_pub){
         bool published = Particle.publish(
                 "IR2131-G09-E04",
@@ -120,5 +120,6 @@ void loop() {
                 distance
             );
         first_pub = false;
+        lastSent = millis();
     }
 }

@@ -1,3 +1,6 @@
+// This #include statement was automatically added by the Particle IDE.
+// This #include statement was automatically added by the Particle IDE.
+
 #include "Particle.h"
 #include <Grove_4Digit_Display.h>
 #include <Grove_ChainableLED.h>
@@ -9,8 +12,8 @@ const char* GROUP_ID = "G09-2627";
 const int LIGHT_PIN = A0;
 const int BUZZER_PIN = A2;
 
-const int BRIGHT_THRESHOLD = 1500;
-const int TWILIGHT_THRESHOLD = 750;
+const int BRIGHT_THRESHOLD = 1800;
+const int TWILIGHT_THRESHOLD = 400;
 
 TM1637 display(D2, D3);
 ChainableLED leds(D4, D5, 1);
@@ -19,6 +22,8 @@ ChainableLED leds(D4, D5, 1);
 int lightValue = 0;
 const char* state = "BOOT";
 const char* last_state = "BOOT";
+const char* last_difstate = "BOOT";
+
 const char* alarm_state = "DESACTIVADA";
 
 //CONTROL DE TIEMPOS Y FLAGS
@@ -26,7 +31,7 @@ unsigned long last_Read = 0;
 unsigned long last_buzzed = 0;
 bool first_pub = false;
 bool buzzOn = false;
-
+bool display_off = false;
 //COMANDOS Y RESULTADOS
 String lastCommand = "";
 int lastResult = 0;
@@ -34,11 +39,13 @@ int lastResult = 0;
 int displayControl(String command){
     int result = -1;
     if (command == "DISPLAY"){
-        display.setBrightness(7, true);
+        display.set(BRIGHT_TYPICAL);
+        display_off = false;
         result = 1;
     }
     if (command == "DISPLAYN'T"){
-        display.setBrightness(7, false);
+        display.clearDisplay();
+        display_off = true;
         result = 1;
     }
     lastCommand = command;
@@ -51,7 +58,7 @@ void setup() {
     digitalWrite(BUZZER_PIN, LOW);
     Particle.function("displayControl", displayControl);
     Particle.variable("lightValue", lightValue);
-        lightValue = analogRead(LIGHT_PIN);
+    lightValue = analogRead(LIGHT_PIN);
     last_Read = millis();
     //INICIALIZACIÓN DEL DISPLAY
     display.init();
@@ -102,7 +109,6 @@ void loop(){
     if (first_pub && ((millis() - last_Read) >= 1000)) {
             last_Read = millis();
             lightValue = analogRead(LIGHT_PIN);
-            last_state = state;
             if (lightValue >= BRIGHT_THRESHOLD){
                 state = "BRIGHT";
                 leds.setColorRGB(0,255,255,255);
@@ -112,31 +118,40 @@ void loop(){
             }else{
                 state = "NIGHT";
                 leds.setColorRGB(0,255, 0, 0);
-            }     
+            }
     }
     //FIN DEL BLOQUE DE LOGICA DE LOS ESTADOS
-    
+
     //BLOQUE DE FUNCIONAMIENTO DE LA ALARMA
-    if (last_state == "NIGHT" && state == "BRIGHT" && millis()-last_buzzed >= 1000){
+    if (last_difstate == "NIGHT" && state == "BRIGHT"){
         last_buzzed = millis();
-        buzzOn = !buzzOn;
         alarm_state = "ACTIVADA";
-    }else{alarm_state = "DESACTIVADA";}
-    //FIN DE FUNCIONAMIENTO DE LA ALARMA
-    
-    //BLOQUE DEL DISPLAY
-    int8_t digits[]={0,0,0,0};
-    digits[0] = lightValue / 1000;      
-    digits[1] = (lightValue / 100) % 10;   
-    digits[2] = (lightValue / 10) % 10;    
-    digits[3] = lightValue % 10;
-    for(int i=0;i<4;++i){
-        display.display(i,digits[i]);
+        buzzOn = !buzzOn;
+        digitalWrite(BUZZER_PIN, buzzOn);
+        delay(1000);
+    }else{
+        alarm_state = "DESACTIVADA";
+        digitalWrite(BUZZER_PIN, LOW);
+
     }
-    //FIN DEL BLOQUE DE DISPLAY    
+    //FIN DE FUNCIONAMIENTO DE LA ALARMA
+
+    //BLOQUE DEL DISPLAY
+    if(!display_off){
+        int8_t digits[]={0,0,0,0};
+        digits[0] = lightValue / 1000;
+        digits[1] = (lightValue / 100) % 10;
+        digits[2] = (lightValue / 10) % 10;
+        digits[3] = lightValue % 10;
+        for(int i=0;i<4;++i){
+            display.display(i,digits[i]);
+        }
+    }
+
+    //FIN DEL BLOQUE DE DISPLAY
     //BLOQUE DE PUBLICACIONES
     if(state != last_state || !first_pub){
-    String payload = makePayload(state,lightValue,alarm_state);
+    String payload = makePayload(state,lightValue,alarm_state,lastResult, lastCommand);
         bool published = Particle.publish(
                 "IR2131-G09-E03",
                 payload,
@@ -145,6 +160,8 @@ void loop(){
         if (published){
             first_pub = true;
         }
+        last_difstate = last_state;
+        last_state = state;
     }
     //FIN DE BLOQUE DE PUBLICACIONES
 
