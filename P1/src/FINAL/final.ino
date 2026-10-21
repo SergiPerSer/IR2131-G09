@@ -20,6 +20,7 @@ ChainableLED leds(D4, D5, 1);
 
 //LECTURAS Y ESTADOS DE SENSORES
 int lightValue = 0;
+int stateCode= 0;
 const char* state = "BOOT";
 const char* last_state = "BOOT";
 const char* last_difstate = "BOOT";
@@ -58,6 +59,7 @@ void setup() {
     digitalWrite(BUZZER_PIN, LOW);
     Particle.function("displayControl", displayControl);
     Particle.variable("lightValue", lightValue);
+    Particle.variable("stateCode", stateCode);
     lightValue = analogRead(LIGHT_PIN);
     last_Read = millis();
     //INICIALIZACIÓN DEL DISPLAY
@@ -111,49 +113,25 @@ void loop(){
             lightValue = analogRead(LIGHT_PIN);
             if (lightValue >= BRIGHT_THRESHOLD){
                 state = "BRIGHT";
+                stateCode=0;
                 leds.setColorRGB(0,255,255,255);
             }else if(lightValue >= TWILIGHT_THRESHOLD){
                 state = "TWILIGHT";
+                stateCode=1;
                 leds.setColorRGB(0,255, 165, 0);
             }else{
                 state = "NIGHT";
+                stateCode=2;
                 leds.setColorRGB(0,255, 0, 0);
             }
     }
     //FIN DEL BLOQUE DE LOGICA DE LOS ESTADOS
-
-    //BLOQUE DE FUNCIONAMIENTO DE LA ALARMA
-    if (last_difstate == "NIGHT" && state == "BRIGHT"){
-        last_buzzed = millis();
-        alarm_state = "ACTIVADA";
-        buzzOn = !buzzOn;
-        digitalWrite(BUZZER_PIN, buzzOn);
-        delay(1000);
-    }else{
-        alarm_state = "DESACTIVADA";
-        digitalWrite(BUZZER_PIN, LOW);
-
-    }
-    //FIN DE FUNCIONAMIENTO DE LA ALARMA
-
-    //BLOQUE DEL DISPLAY
-    if(!display_off){
-        int8_t digits[]={0,0,0,0};
-        digits[0] = lightValue / 1000;
-        digits[1] = (lightValue / 100) % 10;
-        digits[2] = (lightValue / 10) % 10;
-        digits[3] = lightValue % 10;
-        for(int i=0;i<4;++i){
-            display.display(i,digits[i]);
-        }
-    }
-
-    //FIN DEL BLOQUE DE DISPLAY
+    
     //BLOQUE DE PUBLICACIONES
     if(state != last_state || !first_pub){
     String payload = makePayload(state,lightValue,alarm_state,lastResult, lastCommand);
         bool published = Particle.publish(
-                "IR2131-G09-E03",
+                "IR2131-G09-FINAL",
                 payload,
                 PRIVATE
             );
@@ -164,5 +142,33 @@ void loop(){
         last_state = state;
     }
     //FIN DE BLOQUE DE PUBLICACIONES
+    
+    //BLOQUE DE FUNCIONAMIENTO DE LA ALARMA
+    if (last_difstate == "NIGHT" && state == "BRIGHT"){
+        last_buzzed = millis();
+        alarm_state = "ACTIVADA";
+        buzzOn = !buzzOn;
+        digitalWrite(BUZZER_PIN, buzzOn);
+        delay(1000);
+    }else{
+        alarm_state = "DESACTIVADA";
+        digitalWrite(BUZZER_PIN, LOW);
+    
+    }
+    //FIN DE FUNCIONAMIENTO DE LA ALARMA
+    
+    //BLOQUE DEL DISPLAY
+    if(!display_off){
+        int8_t digits[]={0,0,0,0};
+        digits[0] = lightValue / 1000;      
+        digits[1] = (lightValue / 100) % 10;   
+        digits[2] = (lightValue / 10) % 10;    
+        digits[3] = lightValue % 10;
+        for(int i=0;i<4;++i){
+            display.display(i,digits[i]);
+        }
+    }
+
+    //FIN DEL BLOQUE DE DISPLAY    
 
 }
