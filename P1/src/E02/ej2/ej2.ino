@@ -7,6 +7,7 @@ const char* GROUP_ID = "G09-2627";
 // Selecciona el pin del LED Grove simple.
 const int LED_PIN = D4;
 String lastCommand = "";
+String trueCommand = "";
 int lastResult = 0;
 bool pendingPublish = false;
 unsigned long last_pub;
@@ -31,9 +32,10 @@ int ledControl(String command) {
     }
     
     if (result != -1){
-        lastCommand = command;
+        trueCommand = command;
         lastResult = result;    
     }
+    lastCommand
     pendingPublish=true;
     return result;
 }
@@ -97,7 +99,7 @@ void loop() {
             }
         }
     }
-    if (lastCommand == "BLINK" && millis()-last_parpadeo >= 100){
+    if (trueCommand == "BLINK" && millis()-last_parpadeo >= 100){
         last_parpadeo = millis();
         ledOn = !ledOn;
         digitalWrite(LED_PIN, ledOn ? HIGH : LOW);
