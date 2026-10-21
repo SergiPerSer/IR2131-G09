@@ -34,7 +34,7 @@ int ledControl(String command) {
         lastCommand = command;
         lastResult = result;    
     }
-
+    pendingPublish=true;
     return result;
 }
 // Configura la salida y registra la funcion al arrancar.
@@ -101,8 +101,5 @@ void loop() {
         last_parpadeo = millis();
         ledOn = !ledOn;
         digitalWrite(LED_PIN, ledOn ? HIGH : LOW);
-    }
-    if (millis()-last_pub >= 1000){
-        pendingPublish=true;
     }
 }
