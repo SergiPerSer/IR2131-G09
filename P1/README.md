@@ -3,16 +3,16 @@
 
 ## E01 - LED Grove simple con dos patrones automáticos
 
-**Estado:** Pendiente
+**Estado:** Completado
 
 ### Artefactos
 - [Codigo](src/E01/)
 
 ### Evidencias
-- [Video](ENLACE_DRIVE)
+- [Video](https://drive.google.com/drive/u/1/folders/1WP251OqCh4MTeqonMLc-gk7lxf5ROKAD)
 
 ### Validacion
-
+Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apagar. Primero pusimos un tiempo de alerta mayor que el que hay ahora, pero lo cambiamos por exagerar los resultados. Sin embargo, no lo hemos disminuido mucho para que no se vuelva homogéneo.
 ## E02 - Control remoto del LED con Particle.function()
 
 **Estado:** Pendiente
