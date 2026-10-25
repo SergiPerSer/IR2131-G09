@@ -12,7 +12,7 @@
 - [Video](https://drive.google.com/drive/u/1/folders/1WP251OqCh4MTeqonMLc-gk7lxf5ROKAD)
 
 ### Validacion
-## Tabla de Tiempos y Modos de Operación del LED (Pin D4)
+#### Tabla de Tiempos y Modos de Operación del LED (Pin D4)
 
 | Ventana de Tiempo | Modo Activo | Valor de `parpadeo` | Comportamiento del LED |
 | :--- | :--- | :--- | :--- |
@@ -22,6 +22,7 @@
 | **`15s – 20s`** | Normal | `500 ms` | Retorna al modo normal (`500 ms`) |
 | **`20s – 25s`** | Alerta | `50 ms` | Retorna al modo alerta (`50 ms`) |
 | **`> 25s`** | *Ciclo Continuo* | *Alterna 500ms / 50ms* | El bucle se repite indefinidamente cambiando de modo cada 5 segundos |
+
 Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apagar. Primero pusimos un tiempo de alerta mayor que el que hay ahora, pero lo cambiamos por exagerar los resultados. Sin embargo, no lo hemos disminuido mucho para que no se vuelva homogéneo.
 ## E02 - Control remoto del LED con Particle.function()
 
