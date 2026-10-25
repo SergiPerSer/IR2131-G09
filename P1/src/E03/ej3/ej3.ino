@@ -50,21 +50,23 @@ String makePayload( int result) {
 void loop() {
     // Comprueba si ha transcurrido el intervalo de muestreo.
     if (millis() - lastRead >= 1000) {
-        // Reinicia el temporizador de lectura.
         lastRead = millis();
-        // Sustituye el valor anterior por la lectura actual de A0.
         lightValue = analogRead(LIGHT_PIN);
-    }
     
-    if((abs(last_published - lightValue) >= 300) || first_pub){
-        String payload = makePayload(lightValue);
-        bool published = Particle.publish(
-                "IR2131-G09-E03",
-                payload,
-                PRIVATE
-            );
-        last_published = lightValue;
-        first_pub = false;
+        if (Particle.connected()) {
+            if (first_pub || (abs(last_published - lightValue) >= 300)) {
+                String payload = makePayload(lightValue);
+                bool published = Particle.publish(
+                    "IR2131-G09-E03",
+                    payload,
+                    PRIVATE
+                );
+                
+                if (published) {
+                    last_published = lightValue;
+                    first_pub = false; 
+                }
+            }
+        }
     }
-    
 }
