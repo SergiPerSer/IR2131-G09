@@ -6,7 +6,7 @@
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E01/)
+- [Codigo](src/E01/ej0.ino)
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1WP251OqCh4MTeqonMLc-gk7lxf5ROKAD)
@@ -29,7 +29,7 @@ Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apaga
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E02/)
+- [Codigo](src/E02/ej2.ino)
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1k93aIkPy_gPYVdx0ndnb8Gdw87-CSVo6)
@@ -44,7 +44,7 @@ El comando inválido escogido es TEST y su valor es -1. Mediante variables inter
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E03/)
+- [Codigo](src/E03/ej3.ino)
 
 ### Evidencias
 - [Evidencias](evidencias)
@@ -59,7 +59,7 @@ Comparamos con last_published para guardar el valor anterior y restarlo al actua
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E04/)
+- [Codigo](src/E04/ej4.ino)
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1ezIGdwPDIwPQZHnQGqcW8wQZ7gitVYph)
@@ -74,7 +74,7 @@ En las pruebas que hemos hecho en las condiciones ambientales iniciales nuestro 
 ### Propósito
 Este código detecta subidas bruscas de iluminación y avisa al usuario mediante un buzzer. Además podemos ver en tiempo real la iluminación en un display de 4 digitos, el cual puede encenderse y apagarse desde una función Particle.
 ### Artefactos
-- [Codigo](src/FINAL/)
+- [Codigo](src/FINAL/final.ino)
 - [Grafo](src/FINAL/GrafoMermaidFinal.png)
 ### Evidencias
 - [Video](ENLACE_DRIVE)
