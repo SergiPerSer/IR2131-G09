@@ -26,7 +26,7 @@
 Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apagar. Primero pusimos un tiempo de alerta mayor que el que hay ahora, pero lo cambiamos por exagerar los resultados. Sin embargo, no lo hemos disminuido mucho para que no se vuelva homogéneo.
 ## E02 - Control remoto del LED con Particle.function()
 
-**Estado:** Pendiente
+**Estado:** Completado
 
 ### Artefactos
 - [Codigo](src/E02/)
@@ -40,16 +40,19 @@ No hemos elegido ningún estado inicial en específico pero el led está apagado
 El comando inválido escogido es TEST y su valor es -1. Mediante variables intermedias mantenemos el verdadero valor del estado sin contar los comandos inválidos para mantener el estado actual pero enviamos por el paquete JSON los datos del último comando, ya sea válido o inválido.
 ## E03 - Sensor de luz, variable remota y telemetría
 
-**Estado:** Pendiente
+**Estado:** Completado
 
 ### Artefactos
 - [Codigo](src/E03/)
 
 ### Evidencias
-- [Video](ENLACE_DRIVE)
+Las evidencias son las capturas que hay en el Github
 
 ### Validacion
-
+Descubierto: 1452
+Cubierto: 187
+El valor de la variable disminuye cuando cubres el sensor.
+Comparamos con last_published para guardar el valor anterior y restarlo al actual para encontrar una diferencia de 300, de esta manera solo publicamos si hay una diferencia de iluminación de 300
 ## E04 - Detección de cambios de estado
 
 **Estado:** Pendiente
