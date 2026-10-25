@@ -75,7 +75,7 @@ En las pruebas que hemos hecho en las condiciones ambientales iniciales nuestro 
 Este código detecta subidas bruscas de iluminación y avisa al usuario mediante un buzzer. Además podemos ver en tiempo real la iluminación en un display de 4 digitos, el cual puede encenderse y apagarse desde una función Particle.
 ### Artefactos
 - [Codigo](src/FINAL/)
-- [Grafo](src/FINAL/)
+- [Grafo](src/FINAL/GrafoMermaidFinal.png)
 ### Evidencias
 - [Video](ENLACE_DRIVE)
 - [Evidencias](evidencias)
