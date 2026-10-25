@@ -29,7 +29,7 @@ Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apaga
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E02/ej2.ino)
+- [Codigo](src/E02/ej2/ej2.ino)
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1k93aIkPy_gPYVdx0ndnb8Gdw87-CSVo6)
@@ -44,7 +44,7 @@ El comando inválido escogido es TEST y su valor es -1. Mediante variables inter
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E03/ej3.ino)
+- [Codigo](src/E03/ej3/ej3.ino)
 
 ### Evidencias
 - [Evidencias](evidencias)
