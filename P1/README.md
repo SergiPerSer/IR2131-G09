@@ -92,4 +92,6 @@ Este código detecta subidas bruscas de iluminación y avisa al usuario mediante
 | `DISPLAYN'T` | Limpia y apaga el display de 4 dígitos (`clearDisplay`) | `1` |
 | Comando inválido (cualquier otro texto) | Sin cambio en el funcionamiento del display | `-1` |
 
+Durante el proceso de diseño hemos decidido reducir los umbrales de NIGHT para que las transiciones entre NIGHT y TWILIGHT sean más naturales. Se decidió añadir un display para simular una pequeña terminal a la que poder acceder a los valores de iluminación.
+
 Declaramos que hemos realizado, ejecutado y comprobado las tareas y las evidencias de este cuaderno de campo. Hemos declarado en IA.md cualquier uso de IA generativa. Todos los integrantes comprendemos el funcionamiento de la solución que entregamos.
