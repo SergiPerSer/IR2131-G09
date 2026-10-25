@@ -46,7 +46,7 @@ El comando inválido escogido es TEST y su valor es -1. Mediante variables inter
 - [Codigo](src/E03/)
 
 ### Evidencias
-Las evidencias son las capturas que hay en el Github
+- [Codigo](evidencias/E03/)
 
 ### Validacion
 Descubierto: 1452
