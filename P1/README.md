@@ -46,7 +46,7 @@ El comando inválido escogido es TEST y su valor es -1. Mediante variables inter
 - [Codigo](src/E03/)
 
 ### Evidencias
-- [Codigo](evidencias/E03/)
+- [Evidencias](P1/evidencias)
 
 ### Validacion
 Descubierto: 1452
