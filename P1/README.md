@@ -67,17 +67,6 @@ Comparamos con last_published para guardar el valor anterior y restarlo al actua
 
 ### Validacion
 En las pruebas que hemos hecho en las condiciones ambientales iniciales nuestro light_ref es de 1000 y nuestro dark_ref es de 50 y nuestro threshold es de 525 que es la media de estas dos medidas. Comparamos los valores de iluminación con el threshold, si el valor es superior o igual habrá LIGHT, de lo contrario habrá DARK. Si los valores de iluminación oscilan por el umbral tenemos cambios rápidos de estado. Para solucionar este problema debemos introducir un algoritmo de histéresis
-## E05 - Comunicación entre grupos con Grove
-
-**Estado:** Pendiente
-
-### Artefactos
-- [Codigo](src/E05/)
-
-### Evidencias
-- [Video](ENLACE_DRIVE)
-
-### Validacion
 
 ## FINAL - [NOMBRE]
 
