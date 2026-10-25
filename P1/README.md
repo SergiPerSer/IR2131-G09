@@ -82,14 +82,14 @@ Este código detecta subidas bruscas de iluminación y avisa al usuario mediante
 ### Validacion
 | stateCode | Estado | Condicion de entrada | Respuesta fisica |
 |---|---|---|---|
-| 0 | BRIGHT | `lightValue >= 1800` (mayor o igual que `BRIGHT_THRESHOLD`)[cite: 1] | LED encadenable en color **blanco** (`RGB: 255, 255, 255`), display de 4 dígitos mostrando el valor de luz actual y activación temporal del zumbador si se transiciona desde *NIGHT*[cite: 1]. |
-| 1 | TWILIGHT | `400 <= lightValue < 1800` (entre `TWILIGHT_THRESHOLD` y `BRIGHT_THRESHOLD`)[cite: 1] | LED encadenable en color **naranja** (`RGB: 255, 165, 0`) y display de 4 dígitos mostrando el valor de luz actual[cite: 1]. |
-| 2 | NIGHT | `lightValue < 400` (menor que `TWILIGHT_THRESHOLD`)[cite: 1] | LED encadenable en color **rojo** (`RGB: 255, 0, 0`) y display de 4 dígitos mostrando el valor de luz actual[cite: 1]. |
+| 0 | BRIGHT | `lightValue >= 1800` (mayor o igual que `BRIGHT_THRESHOLD`) | LED encadenable en color **blanco** (`RGB: 255, 255, 255`), display de 4 dígitos mostrando el valor de luz actual y activación temporal del zumbador si se transiciona desde *NIGHT*. |
+| 1 | TWILIGHT | `400 <= lightValue < 1800` (entre `TWILIGHT_THRESHOLD` y `BRIGHT_THRESHOLD`) | LED encadenable en color **naranja** (`RGB: 255, 165, 0`) y display de 4 dígitos mostrando el valor de luz actual. |
+| 2 | NIGHT | `lightValue < 400` (menor que `TWILIGHT_THRESHOLD`) | LED encadenable en color **rojo** (`RGB: 255, 0, 0`) y display de 4 dígitos mostrando el valor de luz actual. |
 
 | Comando | Accion | Retorno |
 |---|---|---|
-| `DISPLAY` | Enciende el display, restaura el brillo típico (`BRIGHT_TYPICAL`) y reanuda la actualización de los valores[cite: 1] | `1`[cite: 1] |
-| `DISPLAYN'T` | Limpia y apaga el display de 4 dígitos (`clearDisplay`)[cite: 1] | `1`[cite: 1] |
-| Comando inválido (cualquier otro texto) | Sin cambio en el funcionamiento del display[cite: 1] | `-1`[cite: 1] |
+| `DISPLAY` | Enciende el display, restaura el brillo típico (`BRIGHT_TYPICAL`) y reanuda la actualización de los valores | `1` |
+| `DISPLAYN'T` | Limpia y apaga el display de 4 dígitos (`clearDisplay`) | `1` |
+| Comando inválido (cualquier otro texto) | Sin cambio en el funcionamiento del display | `-1` |
 
 Declaramos que hemos realizado, ejecutado y comprobado las tareas y las evidencias de este cuaderno de campo. Hemos declarado en IA.md cualquier uso de IA generativa. Todos los integrantes comprendemos el funcionamiento de la solución que entregamos.
