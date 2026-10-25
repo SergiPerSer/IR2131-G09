@@ -33,6 +33,7 @@ Se nota un cambio en el parpadeo porque pasa menos tiempo entre encender y apaga
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1k93aIkPy_gPYVdx0ndnb8Gdw87-CSVo6)
+- [Evidencias](evidencias)
 
 ### Validacion
 No hemos elegido ningún estado inicial en específico pero el led está apagado, por lo que podemos decir que está en OFF. En cuanto a BLINK parpadea cada 100 ms y para que parpadee hay un if que cada 100 ms enciende o apaga el led si el comando equivale a "BLINK".
