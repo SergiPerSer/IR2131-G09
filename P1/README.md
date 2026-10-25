@@ -78,7 +78,7 @@ Este código detecta subidas bruscas de iluminación y avisa al usuario mediante
 
 ### Evidencias
 - [Video](ENLACE_DRIVE)
-
+- [Evidencias](evidencias)
 ### Validacion
 | stateCode | Estado | Condicion de entrada | Respuesta fisica |
 |---|---|---|---|
