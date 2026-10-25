@@ -77,7 +77,7 @@ Este código detecta subidas bruscas de iluminación y avisa al usuario mediante
 - [Codigo](src/FINAL/final.ino)
 - [Grafo](src/FINAL/GrafoMermaidFinal.png)
 ### Evidencias
-- [Video](ENLACE_DRIVE)
+- [Video](https://drive.google.com/drive/u/1/folders/1SK37XSgON459MLOut6ispp0Df9vmE1oH)
 - [Evidencias](evidencias)
 ### Validacion
 | stateCode | Estado | Condicion de entrada | Respuesta fisica |
