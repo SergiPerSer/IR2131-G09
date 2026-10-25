@@ -8,6 +8,7 @@ const char* GROUP_ID = "G09-2627";
 const int LED_PIN = D4;
 String lastCommand = "";
 String trueCommand = "";
+int trueResult = 0;
 int lastResult = 0;
 bool pendingPublish = false;
 unsigned long last_pub;
@@ -33,9 +34,10 @@ int ledControl(String command) {
     
     if (result != -1){
         trueCommand = command;
-        lastResult = result;    
+        trueResult = result;    
     }
-    lastCommand
+    lastCommand = command;
+    lastResult = result;
     pendingPublish=true;
     return result;
 }
