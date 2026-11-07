@@ -47,7 +47,7 @@
 - [Codigo](src/E04/E04.ino)
 
 ### Evidencias
-- [Video](https://drive.google.com/drive/u/1/folders/1ezIGdwPDIwPQZHnQGqcW8wQZ7gitVYph)
+- [Video](https://drive.google.com/file/d/1yYIup5fQJ94ykWHiYwHVu32mQ9WXqUMj/view?usp=drive_link)
 - [Evidencias](Evidencias)
 
 ### Validacion
