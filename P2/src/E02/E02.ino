@@ -8,7 +8,7 @@
 SYSTEM_THREAD(ENABLED); // Atiende la conexion en paralelo al programa.
 
 const char* GROUP_ID = "G09-2627"; // Identifica al grupo.
-IPAddress serverIP(54, 167, 127, 59); // EJEMPLO: sustituid por la IPv4 publica de EC2.
+IPAddress serverIP(54, 242, 252, 105); // EJEMPLO: sustituid por la IPv4 publica de EC2.
 const int COAP_PORT = 5683; // Puerto UDP del servidor.
 char resourcePath[] = "state/G09-2627"; // Cambiad el grupo; la API recibe char*.
 Coap coap; // Crea el cliente CoAP.
@@ -77,7 +77,7 @@ void loop() {
     if (buttonPressed()){
         send_true = !send_true;
     }
-    if (millis() - lastRequest < 5000) return; // Espera sin detener la atencion de CoAP.
+    if (millis() - lastRequest < 1000) return; // Espera sin detener la atencion de CoAP.
     lastRequest = millis(); // Reinicia el intervalo.
     if (coapReply == "true"){
         value = true;
