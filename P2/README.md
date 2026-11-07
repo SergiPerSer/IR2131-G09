@@ -39,6 +39,14 @@ El periodo de get es de un segundo en nuestro código. Esto hace que primero tie
 - [Evidencias](Evidencias)
 
 ### Validacion
+Topic: IR2131/2627/G09/light QoS: 0
+{"group":"G09-2627","light":582}
+
+Intervalo de publicación: 5 segundos
+
+El intervalo de 5 segundos nos parece cómodo para observar los cambios en la iluminación sin saturar a mensajes el mqttx.
+
+El mqttx tiene como broker la ip de la EC2 por lo tanto no necesita comunicarse con el argon para leer los mensajes publicados en el topic "light". Esto se debe a que el argon ya conoce la IP del broker de EC2 y allí es donde envía las publicaciones. De esta forma EC2 hace de intermediario o "gestor" de los topics para que cualquier cliente pueda leerlos.
 
 ## E04 - Suscripción, interpretación de un JSON recibido y respuesta a peticiones
 
