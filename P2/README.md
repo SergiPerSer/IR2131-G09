@@ -60,7 +60,9 @@ El mqttx tiene como broker la ip de la EC2 por lo tanto no necesita comunicarse 
 - [Evidencias](Evidencias)
 
 ### Validacion
-
+IR2131/2627/G09/light: A este topic se suscribe el cliente de MQTTX para leer los datos que publica el argon. Y el argon es el cliente que publica los datos cuando el request se lo pide
+IR2131/2627/G09/request: A este topic se suscribe el argon y mediante la lógica interna del programa extrae los datos y comprueba que se cumplan los requisitos para permitir la publicación del valor de luz. Por otro lado, el cliente de MQTTX es suscriptor y publisher ya que es desde el MQTTX por donde enviamos la señal de activación enviada por el topic /request.
+NOTA: el cliente MQTTX es suscriptor de ambos topics ya que se suscribe a IR2131/2627/G09/#
 ## E05 - Niveles de QoS y mensajes retenidos con los clientes de Mosquitto
 
 **Estado:** Completado
