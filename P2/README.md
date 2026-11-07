@@ -12,6 +12,7 @@
 - [Evidencias](Evidencias)
 
 ### Validacion
+Tras un PUT inválido el GET nos muestra que el valor se actualiza y nos muestra un invalid. Será nuestra tarea en el código gestionar estas señales para obviar invalid, en caso de que queramos utilizarlos.
 
 ## E02 - Control de un actuador a partir del estado guardado en el servidor.
 
@@ -25,7 +26,7 @@
 - [Evidencias](Evidencias)
 
 ### Validacion
-
+El periodo de get es de un segundo en nuestro código. Esto hace que primero tiene que publicarse el put, luego el get tras un segundo y, finalmente, actualizarse el valor del led al segundo siguiente. Por lo tanto, estamos ante un proceso de encender y apagar el led de dos segundos (En nuestro caso). Distinguimos a los clientes por su IP (La del pulsador es la IP del Argon y la del otro cliente es la IP local 127.0.0.1). El antirrebote no se ha actualizado porque no ha dado problemas en las pruebas.
 ## E03 - Publicación periódica de lecturas y comprobación con MQTTX
 
 **Estado:** Completado
