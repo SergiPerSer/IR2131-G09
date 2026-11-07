@@ -1,48 +1,44 @@
 **Grupo:** G09
 **Identificador:** G09-2627
 
-## E01 - Get y Put en servidor UDP
+## E01 - Peticiones PUT y GET desde el Argon y lectura de la respuesta
 
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E01/p2-e01.ino)
+- [Codigo](src/E01/P2-e01.ino)
 
 ### Evidencias
 - [Evidencias](Evidencias)
 
 ### Validacion
 
-## E02 - Control remoto del LED con Particle.function()
+## E02 - Control de un actuador a partir del estado guardado en el servidor.
 
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E02/ej2/ej2.ino)
+- [Codigo](src/E02/p2-e02.ino)
 
 ### Evidencias
-- [Video](https://drive.google.com/drive/u/1/folders/1k93aIkPy_gPYVdx0ndnb8Gdw87-CSVo6)
-- [Evidencias](evidencias)
+- [Video]
+- [Evidencias](Evidencias)
 
 ### Validacion
-No hemos elegido ningún estado inicial en específico pero el led está apagado, por lo que podemos decir que está en OFF. En cuanto a BLINK parpadea cada 100 ms y para que parpadee hay un if que cada 100 ms enciende o apaga el led si el comando equivale a "BLINK".
 
-El comando inválido escogido es TEST y su valor es -1. Mediante variables intermedias mantenemos el verdadero valor del estado sin contar los comandos inválidos para mantener el estado actual pero enviamos por el paquete JSON los datos del último comando, ya sea válido o inválido.
-## E03 - Sensor de luz, variable remota y telemetría
+## E03 - Publicación periódica de lecturas y comprobación con MQTTX
 
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E03/ej3/ej3.ino)
+- [Codigo](src/E03/p2-e03.ino)
 
 ### Evidencias
-- [Evidencias](evidencias)
+- [Video]
+- [Evidencias](Evidencias)
 
 ### Validacion
-Descubierto: 1452
-Cubierto: 187
-El valor de la variable disminuye cuando cubres el sensor.
-Comparamos con last_published para guardar el valor anterior y restarlo al actual para encontrar una diferencia de 300, de esta manera solo publicamos si hay una diferencia de iluminación de 300
+
 ## E04 - Detección de cambios de estado
 
 **Estado:** Completado
