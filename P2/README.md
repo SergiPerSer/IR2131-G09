@@ -21,7 +21,7 @@
 - [Codigo](src/E02/p2-e02.ino)
 
 ### Evidencias
-- [Video]
+- [Video](https://drive.google.com/file/d/1_Og65k__lUSp-O3MJLNJ4nFstdTAZf2b/view?usp=drive_link)
 - [Evidencias](Evidencias)
 
 ### Validacion
