@@ -39,21 +39,20 @@
 
 ### Validacion
 
-## E04 - Detección de cambios de estado
+## E04 - Suscripción, interpretación de un JSON recibido y respuesta a peticiones
 
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E04/ej4.ino)
+- [Codigo](src/E04/E04.ino)
 
 ### Evidencias
 - [Video](https://drive.google.com/drive/u/1/folders/1ezIGdwPDIwPQZHnQGqcW8wQZ7gitVYph)
-- [Evidencias](evidencias)
+- [Evidencias](Evidencias)
 
 ### Validacion
-En las pruebas que hemos hecho en las condiciones ambientales iniciales nuestro light_ref es de 1000 y nuestro dark_ref es de 50 y nuestro threshold es de 525 que es la media de estas dos medidas. Comparamos los valores de iluminación con el threshold, si el valor es superior o igual habrá LIGHT, de lo contrario habrá DARK. Si los valores de iluminación oscilan por el umbral tenemos cambios rápidos de estado. Para solucionar este problema debemos introducir un algoritmo de histéresis
 
-## FINAL - [ALARMA]
+## E05 - Niveles de QoS y mensajes retenidos con los clientes de Mosquitto
 
 **Estado:** Completado
 ### Propósito
