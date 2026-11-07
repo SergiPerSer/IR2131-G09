@@ -233,7 +233,7 @@ Client (null) received PINGRESP
 
 Parte B/Terminal 2
 
-**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$**mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -r -n
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -r -n
 
 **luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -q 1 -m "G09-2627 normal"
 
