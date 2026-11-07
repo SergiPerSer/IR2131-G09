@@ -244,3 +244,31 @@ Parte B/Terminal 2
 ### Evidencias
 - [Evidencias](Evidencias)
 ### Validacion
+
+**Completad una tabla con los paquetes que aparecen con QoS 0, 1 y 2 en cada tramo: publicador y bróker, y bróker y suscripto**
+
+| Nivel de QoS | Tramo 1: Publicador Bróker | Tramo 2: Bróker Suscriptor |
+| :--- | :--- | :--- |
+| **QoS 0** | `PUBLISH` | `PUBLISH` |
+| **QoS 1** | `PUBLISH`, `PUBACK` | `PUBLISH`, `PUBACK` |
+| **QoS 2** | `PUBLISH`, `PUBREC`, `PUBREL`, `PUBCOMP` | `PUBLISH`, `PUBREC`, `PUBREL`, `PUBCOMP` |
+
+ **¿Qué garantía da cada nivel**
+
+* **QoS 0 (Como máximo una vez):** Entrega tipo *best-effort*. No hay acuses de recibo ni reintentos; el mensaje puede perderse, pero nunca se duplica.
+* **QoS 1 (Al menos una vez):** Asegura que el mensaje llega al receptor mediante reintentos con `PUBACK`. Puede haber duplicados.
+* **QoS 2 (Exactamente una vez):** El nivel más seguro (intercambio de 4 pasos). Garantiza que no hay pérdidas ni duplicados.
+
+ **¿Con qué QoS llega G09-2627-Q2 al suscriptor 0que pide QoS 0, y por qué?**
+ 
+ El mensaje llega con qos 0 porque el qos del mensaje no puede ser mayor al qos ni del subscriptor ni del publicador y como el del subscriptor es 0 el del mensaje es 0
+
+**¿Por qué el suscriptor recibe un mensaje en el paso 5 de la parte B y ninguno en el paso 3?**
+
+Porque el mensaje del paso 3 es uno normal y el del paso 5 está retenido.
+ 
+ **¿Qué diferencia hay entre conservar el último mensaje mediante retain y guardar un historial de publicaciones?**
+ 
+ Que el retain guarda solo el último mensaje que se ha enviado con estas características y uh historial de publicaciones (además de necesitar medios externos) te permite almacenar todos los mensajes que se quiera guardar a lo largo de un tiempo determinado
+
+ 
