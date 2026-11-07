@@ -60,9 +60,17 @@ El mqttx tiene como broker la ip de la EC2 por lo tanto no necesita comunicarse 
 - [Evidencias](Evidencias)
 
 ### Validacion
-IR2131/2627/G09/light: A este topic se suscribe el cliente de MQTTX para leer los datos que publica el argon. Y el argon es el cliente que publica los datos cuando el request se lo pide
+IR2131/2627/G09/light: A este topic se suscribe el cliente de MQTTX para leer los datos que publica el argon. Y el argon es el cliente que publica los datos cuando el request se lo pide.
+
 IR2131/2627/G09/request: A este topic se suscribe el argon y mediante la lógica interna del programa extrae los datos y comprueba que se cumplan los requisitos para permitir la publicación del valor de luz. Por otro lado, el cliente de MQTTX es suscriptor y publisher ya que es desde el MQTTX por donde enviamos la señal de activación enviada por el topic /request.
+
 NOTA: el cliente MQTTX es suscriptor de ambos topics ya que se suscribe a IR2131/2627/G09/#
+
+1. Prueba1: El sensor se encuentra en luz ambiente. El cliente MQTTX publica con el identificador del grupo y el request "READ". Argon, que está suscrito, lee este mensaje y da luz verde para mandar una lectura.
+2. Prueba2: El sensor se encuentra cubierto. El cliente MQTTX publica con el identificador del grupo y el request "READ". Argon, que está suscrito, lee este mensaje y da luz verde para mandar una lectura.
+3. Prueba3: El sensor se encuentra en luz ambiente. El cliente MQTTX publica con el identificador del grupo y el request "WRITE". Argon, que está suscrito, lee este mensaje y nota que es incorrecto. Por lo tanto, no manda la lectura de luz y el display no se actualiza.
+
+El callback no manda el mensaje porque su propósito es el de recibir y gestionar un mensaje entrante. El loop es el encargado de publicar y realizar las acciones. De esta forma el callback solo se dedica a recibir mensajes y no se satura. Si MQTTX envía una petición y el argon está apagado o desconectado, el broker recibe el mensaje publicado al topic pero no lo manda al argon por lo que no recibimos respuesta aunque la petición sea correcta.
 ## E05 - Niveles de QoS y mensajes retenidos con los clientes de Mosquitto
 
 **Estado:** Completado
