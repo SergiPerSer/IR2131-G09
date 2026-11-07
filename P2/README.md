@@ -18,7 +18,7 @@
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E02/p2-e02.ino)
+- [Codigo](src/E02/E02)
 
 ### Evidencias
 - [Video](https://drive.google.com/file/d/1_Og65k__lUSp-O3MJLNJ4nFstdTAZf2b/view?usp=drive_link)
@@ -31,7 +31,7 @@
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E03/p2-e03.ino)
+- [Codigo](src/E03/E03)
 
 ### Evidencias
 - [Video](https://drive.google.com/file/d/1BmnOXav9HqqbiRQDX9ikJhV4W7pK5uDT/view?usp=drive_link)
