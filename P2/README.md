@@ -59,69 +59,187 @@ El periodo de get es de un segundo en nuestro código. Esto hace que primero tie
 ### Propósito
 Este código detecta subidas bruscas de iluminación y avisa al usuario mediante un buzzer. Además podemos ver en tiempo real la iluminación en un display de 4 digitos, el cual puede encenderse y apagarse desde una función Particle.
 ### Artefactos
-- Parte 1/Terminal 1
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_sub -h localhost -t "IR2131/2627/G09/qos" -q 2 -v -d
+
+- Parte A/Terminal 1
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_sub -h localhost -t "IR2131/2627/G09/qos" -q 2 -v -d
+
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending SUBSCRIBE (Mid: 1, Topic: IR2131/2627/G09/qos, QoS: 2, Options: 0x00)
+
 Client (null) received SUBACK
+
 Subscribed (mid: 1): 2
+
 Client (null) received PUBLISH (d0, q0, r0, m0, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 IR2131/2627/G09/qos G09-2627-Q0
+
 Client (null) received PUBLISH (d0, q1, r0, m1, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) sending PUBACK (m1, rc0)
+
 IR2131/2627/G09/qos G09-2627-Q0
+
 Client (null) received PUBLISH (d0, q2, r0, m2, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) sending PUBREC (m2, rc0)
+
 Client (null) received PUBREL (Mid: 2)
+
 Client (null) sending PUBCOMP (m2)
+
 IR2131/2627/G09/qos G09-2627-Q0
+
 ^CClient (null) sending DISCONNECT
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_sub -h localhost -t "IR2131/2627/G09/qos" -q 0 -v -d
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_sub -h localhost -t "IR2131/2627/G09/qos" -q 0 -v -d
+
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending SUBSCRIBE (Mid: 1, Topic: IR2131/2627/G09/qos, QoS: 0, Options: 0x00)
+
 Client (null) received SUBACK
+
 Subscribed (mid: 1): 0
+
 Client (null) received PUBLISH (d0, q0, r0, m0, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 IR2131/2627/G09/qos G09-2627-Q0
+
 Client (null) sending PINGREQ
+
 Client (null) received PINGRESP
+
 Client (null) sending PINGREQ
+
 Client (null) received PINGRESP
+
 Client (null) sending PINGREQ
+
 Client (null) received PINGRESP
+
 Client (null) sending PINGREQ
+
 Client (null) received PINGRESP
+
 ^CClient (null) sending DISCONNECT
--Parte 1/Terminal 2
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 0 -m "G09-2627-Q0" -d
+
+-Parte A/Terminal 2
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 0 -m "G09-2627-Q0" -d
+
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending PUBLISH (d0, q0, r0, m1, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) sending DISCONNECT
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 1 -m "G09-2627-Q0" -d
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 1 -m "G09-2627-Q0" -d
+
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending PUBLISH (d0, q1, r0, m1, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) received PUBACK (Mid: 1, RC:0)
+
 Client (null) sending DISCONNECT
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 2 -m "G09-2627-Q0" -d
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 2 -m "G09-2627-Q0" -d
+
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending PUBLISH (d0, q2, r0, m1, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) received PUBREC (Mid: 1)
+
 Client (null) sending PUBREL (m1)
+
 Client (null) received PUBCOMP (Mid: 1, RC:0)
+
 Client (null) sending DISCONNECT
-luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$ mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 2 -m "G09-2627-Q0" -d
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/qos" -q 2 -m "G09-2627-Q0" -d
 Client (null) sending CONNECT
+
 Client (null) received CONNACK (0)
+
 Client (null) sending PUBLISH (d0, q2, r0, m1, 'IR2131/2627/G09/qos', ... (11 bytes))
+
 Client (null) received PUBREC (Mid: 1)
+
 Client (null) sending PUBREL (m1)
+
 Client (null) received PUBCOMP (Mid: 1, RC:0)
+
 Client (null) sending DISCONNECT
+
+Parte B/Terminal 1
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_sub -h localhost -t "IR2131/2627/G09/retain" -v -d
+
+Client (null) sending CONNECT
+
+Client (null) received CONNACK (0)
+
+Client (null) sending SUBSCRIBE (Mid: 1, Topic: IR2131/2627/G09/retain, QoS: 0, Options: 0x00)
+
+Client (null) received SUBACK
+
+Subscribed (mid: 1): 0
+
+Client (null) received PUBLISH (d0, q0, r0, m0, 'IR2131/2627/G09/retain', ... (17 bytes))
+
+IR2131/2627/G09/retain G09-2627 retenido
+
+Client (null) sending PINGREQ
+
+Client (null) received PINGRESP
+
+^CClient (null) sending DISCONNECT
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_sub -h localhost -t "IR2131/2627/G09/retain" -v -d
+
+Client (null) sending CONNECT
+
+Client (null) received CONNACK (0)
+
+Client (null) sending SUBSCRIBE (Mid: 1, Topic: IR2131/2627/G09/retain, QoS: 0, Options: 0x00)
+
+Client (null) received SUBACK
+
+Subscribed (mid: 1): 0
+
+Client (null) received PUBLISH (d0, q0, r1, m0, 'IR2131/2627/G09/retain', ... (17 bytes))
+
+IR2131/2627/G09/retain G09-2627 retenido
+
+Client (null) sending PINGREQ
+
+Client (null) received PINGRESP
+
+^CClient (null) sending DISCONNECT
+
+Parte B/Terminal 2
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$**mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -r -n
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -q 1 -m "G09-2627 normal"
+
+**luis@luis-HP-Pavilion-Gaming-Laptop-16-a0xxx:~$** mosquitto_pub -h localhost -t "IR2131/2627/G09/retain" -r -q 1 -m "G09-2627 retenido"
+
+
 
 ### Evidencias
 - [Evidencias](Evidencias)
