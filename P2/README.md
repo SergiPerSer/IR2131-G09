@@ -6,7 +6,7 @@
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E01/P2-e01.ino)
+- [Codigo](src/E01/main.cpp)
 
 ### Evidencias
 - [Evidencias](Evidencias)
@@ -19,7 +19,7 @@ Tras un PUT inválido el GET nos muestra que el valor se actualiza y nos muestra
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E02/E02.ino)
+- [Codigo](src/E02/main.cpp)
 
 ### Evidencias
 - [Video](https://drive.google.com/file/d/1_Og65k__lUSp-O3MJLNJ4nFstdTAZf2b/view?usp=drive_link)
@@ -32,7 +32,7 @@ El periodo de get es de un segundo en nuestro código. Esto hace que primero tie
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E03/E03.ino)
+- [Codigo](src/E03/main.cpp)
 
 ### Evidencias
 - [Video](https://drive.google.com/file/d/1BmnOXav9HqqbiRQDX9ikJhV4W7pK5uDT/view?usp=drive_link)
@@ -53,7 +53,7 @@ El mqttx tiene como broker la ip de la EC2 por lo tanto no necesita comunicarse 
 **Estado:** Completado
 
 ### Artefactos
-- [Codigo](src/E04/E04.ino)
+- [Codigo](src/E04/main.cpp)
 
 ### Evidencias
 - [Video](https://drive.google.com/file/d/1yYIup5fQJ94ykWHiYwHVu32mQ9WXqUMj/view?usp=drive_link)
