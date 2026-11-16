@@ -1,0 +1,11 @@
+# Certificados, claves y configuracion local
+**/secrets.h
+**/*.pem
+**/*.key
+**/*.ppk
+# Compilaciones de Workbench: el binario contiene la clave del Argon
+**/target/
+**/*.bin
+# Los videos se guardan en Google Drive
+**/*.mp4
+**/*.mov
