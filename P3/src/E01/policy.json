@@ -1,0 +1,37 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:Connect",
+      "Resource": "arn:aws:iot:us-east-1:533267347729:client/IR2131-G09-2627"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Publish",
+      "Resource": [
+        "arn:aws:iot:us-east-1:533267347729:topic/IR2131/2627/G09/P3/aws/telemetry",
+        "arn:aws:iot:us-east-1:533267347729:topic/$aws/things/IR2131-G09-2627/shadow/update",
+        "arn:aws:iot:us-east-1:533267347729:topic/$aws/things/IR2131-G09-2627/shadow/get"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Subscribe",
+      "Resource": [
+        "arn:aws:iot:us-east-1:533267347729:topicfilter/IR2131/2627/G09/P3/aws/command",
+        "arn:aws:iot:us-east-1:533267347729:topicfilter/$aws/things/IR2131-G09-2627/shadow/update/*",
+        "arn:aws:iot:us-east-1:533267347729:topicfilter/$aws/things/IR2131-G09-2627/shadow/get/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Receive",
+      "Resource": [
+        "arn:aws:iot:us-east-1:533267347729:topic/IR2131/2627/G09/P3/aws/command",
+        "arn:aws:iot:us-east-1:533267347729:topic/$aws/things/IR2131-G09-2627/shadow/update/*",
+        "arn:aws:iot:us-east-1:533267347729:topic/$aws/things/IR2131-G09-2627/shadow/get/*"
+      ]
+    }
+  ]
+}
